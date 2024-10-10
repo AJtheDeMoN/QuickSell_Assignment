@@ -48,7 +48,7 @@ const TicketCard = ({ ticket, user, groupOption }) => {
   };
 
   return (
-    <div className="ticket-card">
+    <div className="ticket-card unclickable">
       <div className="ticket-header">
         <span className="ticket-id">{ticket.id}</span>
         

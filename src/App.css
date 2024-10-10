@@ -71,3 +71,22 @@
   height: 100%;
   border-radius: 50%;
 }
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 20px;
+  padding: 5px; /* Add some padding for better hover effect */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.icon-container1 {
+  padding: 3px;
+  border-radius: 100px;
+}
+.icon-container1:hover {
+  background-color: #d3d3d3; /* Light grey shade on hover */
+  border-radius: 5px; /* Optional: rounded corners */
+}
+

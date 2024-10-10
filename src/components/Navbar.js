@@ -10,8 +10,12 @@ const Navbar = ({ onSortChange, onGroupChange }) => {
   const [isSortingDropdownOpen, setSortingDropdownOpen] = useState(false);
   const [isGroupingDropdownOpen, setGroupingDropdownOpen] = useState(false);
 
-  const [currentSort, setCurrentSort] = useState('Priority'); // Default sorting
-  const [currentGroup, setCurrentGroup] = useState('User'); // Default grouping
+  const [currentSort, setCurrentSort] = useState(() => {
+    return localStorage.getItem('sortOption') || 'Priority';
+  });
+  const [currentGroup, setCurrentGroup] = useState(() => {
+    return localStorage.getItem('groupOption') || 'Priority';
+  });
 
   const handleSortChange = (sortOption) => {
     setCurrentSort(sortOption); // Update current sort state
