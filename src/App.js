@@ -16,6 +16,7 @@ import toDoIcon from './assets/To-do.svg';
 import AddIcon from './assets/add.svg';
 import MenuIcon from './assets/3 dot menu.svg';
 import backlogIcon from './assets/Backlog.svg';
+import cancelledIcon from './assets/Cancelled.svg';
 
 const priorityIcons = {
   4: urgentIcon,
@@ -37,7 +38,8 @@ const statusIcons = {
   Done: doneIcon,
   'In progress': inProgressIcon,
   Todo: toDoIcon,
-  Backlog: backlogIcon
+  Backlog: backlogIcon,
+  Canceled: cancelledIcon
 };
 
 const App = () => {
@@ -131,15 +133,23 @@ const App = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginLeft: '5px' }}>
                 {groupOption === 'User' && (
                   <>
-                    {users.find(u => u.id === groupKey) && (
+                  {users.find(u => u.id === groupKey) && (
+                    <div style={{ display: 'flex', alignItems: 'center' }} class="user-avatar">
                       <img
                         src={`https://ui-avatars.com/api/?name=${users.find(u => u.id === groupKey).name}`}
                         alt={users.find(u => u.id === groupKey).name}
-                        style={{ borderRadius: '50%', width: '30px', height: '30px' }} // Adjusted size
+                        style={{ borderRadius: '50%', width: '24px', height: '24px', marginRight: '5px' }} // Adjusted size
                       />
-                    )}
-                    <h5 style={{ marginLeft: '5px' }}>{users.find(u => u.id === groupKey)?.name || 'Unknown User'}</h5>
-                  </>
+                      <span
+                        className={`availability-indicator ${
+                          users.find(u => u.id === groupKey).available ? "available" : "unavailable"
+                        }`}
+                      ></span>
+                    </div>
+                  )}
+                  <h5 style={{ marginLeft: '5px' }}>{users.find(u => u.id === groupKey)?.name || 'Unknown User'}</h5>
+                </>
+                
                 )}
                 {groupOption === 'Priority' && (
                   <>
@@ -167,7 +177,7 @@ const App = () => {
               {groupedTickets[groupKey].map((ticket) => {
                 const user = users.find(u => u.id === ticket.userId);
                 return (
-                  <TicketCard key={ticket.id} ticket={ticket} user={user} />
+                  <TicketCard key={ticket.id} ticket={ticket} user={user} groupOption={groupOption}/>
                 );
               })}
             </div>

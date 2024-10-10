@@ -12,7 +12,7 @@ import Todo from "../assets/To-do.svg";
 import InProgress from "../assets/in-progress.svg";
 import Done from "../assets/Done.svg";
 
-const TicketCard = ({ ticket, user }) => {
+const TicketCard = ({ ticket, user, groupOption }) => {
   // Function to get the correct priority SVG
   const getPriorityIcon = (priority) => {
     switch (priority) {
@@ -51,35 +51,46 @@ const TicketCard = ({ ticket, user }) => {
     <div className="ticket-card">
       <div className="ticket-header">
         <span className="ticket-id">{ticket.id}</span>
-        <div className="user-avatar">
-          <img
-            src={`https://ui-avatars.com/api/?name=${user.name}`}
-            alt={user.name}
-          />
-          <span
-            className={`availability-indicator ${
-              user.available ? "available" : "unavailable"
-            }`}
-          ></span>
-        </div>
+        
+        {/* Render user avatar and availability only if groupOption is not "User" */}
+        {groupOption !== 'User' && (
+          <div className="user-avatar">
+            <img
+              src={`https://ui-avatars.com/api/?name=${user.name}`}
+              alt={user.name}
+            />
+            <span
+              className={`availability-indicator ${
+                user.available ? "available" : "unavailable"
+              }`}
+            ></span>
+          </div>
+        )}
       </div>
+
       <h3 className="ticket-title">
-        <img
-          src={getStatusIcon(ticket.status)}
-          alt={ticket.status}
-          className="status-icon"
-        />
+        {/* Render status icon only if groupOption is not "Status" */}
+        {groupOption !== 'Status' && (
+          <img
+            src={getStatusIcon(ticket.status)}
+            alt={ticket.status}
+            className="status-icon"
+          />
+        )}
         {ticket.title}
       </h3>
       <div className="ticket-footer">
         <div className="ticket-content-wrapper">
-          <div className="ticket-priority">
-            <img
-              src={getPriorityIcon(ticket.priority)}
-              alt="priority"
-              className="priority-icon"
-            />
-          </div>
+          {/* Render priority icon only if groupOption is not "Priority" */}
+          {groupOption !== 'Priority' && (
+            <div className="ticket-priority">
+              <img
+                src={getPriorityIcon(ticket.priority)}
+                alt="priority"
+                className="priority-icon"
+              />
+            </div>
+          )}
           <div className="ticket-tag">
             {ticket.tag.map((t, index) => (
               <span className="tag-item" key={index}>
