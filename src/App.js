@@ -1,23 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
+import TicketCard from './components/TicketCard';
+
+const ticketData = {
+  tickets: [
+    {
+      id: "CAM-10",
+      title: "Conduct Security Vulnerability",
+      tag: ["Feature Request"],
+      userId: "usr-4",
+      status: "Backlog",
+      priority: 1
+    }
+  ],
+  users: [
+    { id: "usr-1", name: "Anoop sharma", available: false },
+    { id: "usr-2", name: "Yogesh", available: true },
+    { id: "usr-3", name: "Shankar Kumar", available: true },
+    { id: "usr-4", name: "Ramesh", available: false },
+    { id: "usr-5", name: "Suresh", available: true }
+  ]
+};
 
 function App() {
+  const ticket = ticketData.tickets[0];
+  const user = ticketData.users.find(u => u.id === ticket.userId);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <TicketCard ticket={ticket} user={user} />
     </div>
   );
 }
