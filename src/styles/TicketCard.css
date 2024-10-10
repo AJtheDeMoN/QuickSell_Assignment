@@ -1,7 +1,7 @@
 .ticket-card {
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    padding: 16px;
+    padding: 6px 10px;
     margin: 10px;
     max-width: 360px;
     background-color: #fff;
@@ -16,14 +16,14 @@
   
 .ticket-id {
     font-weight: normal;
-    font-size: 16px;
+    font-size: 12px;
     color: #999c9d;
 }
   
 .user-avatar {
     position: relative;
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
 }
   
 .user-avatar img {
@@ -51,8 +51,8 @@
 }
   
 .ticket-title {
-    font-size: 16px;
-    margin-top: 10px;
+    font-size: 10px;
+    margin-top: 5px;
     display: flex;
     align-items: center;
     color: #272a2d;
@@ -67,7 +67,7 @@
 .ticket-footer {
     display: flex;
     align-items: center;
-    margin-top: 12px;
+    margin-top: 6px;
 }
   
   /* New wrapper around both priority and tag */
@@ -76,7 +76,7 @@
     align-items: center;
     border: 1px solid #f0efef; /* Single border for both divs */
     border-radius: 4px;
-    padding: 0px 2px; /* Padding for inside spacing */
+    padding: 0px 1px; /* Padding for inside spacing */
 }
   
   /* Priority Icon */
@@ -93,7 +93,7 @@
 }
   
 .tag-item {
-    font-size: 12px;
+    font-size: 10px;
     color: #333;
     margin-left: 10px;
 }
